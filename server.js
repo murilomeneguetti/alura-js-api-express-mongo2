@@ -1,8 +1,9 @@
-import app from './src/app.js'
+import "dotenv/config";
+import app from "./src/app.js";
 
-const port = process.env.PORT || 3000;
+//porta 3000 onde a conexão vai acontecer
+const PORT = 3000;
 
-
-app.listen(port, () => {
-  console.log(`Servidor escutando em http://localhost:${port}`)
+app.listen(PORT, () => {
+    console.log('servidor escutando!');
 })

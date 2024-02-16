@@ -1,14 +1,23 @@
 import express from "express";
-import db from "./config/dbConnect.js"
-import routes from "./routes/index.js"
+import conectaNaDatabase from "./config/dbConnect.js";
+import routes from "./routes/index.js";
 
-db.on("error", console.log.bind(console, 'Erro de conexão'))
-db.once("open", () => {
-  console.log('conexão com o banco feita com sucesso')
-})
+const conexao = await conectaNaDatabase();
 
+//método do mongoose para mostrar erro de conexão
+conexao.on('error', (erro) => {
+    console.error("erro de conexão", erro);
+});
+
+//método do mongoose para mostrar que a conexão foi feita
+conexao.once('open', () => {
+    console.log('Conexão com o banco feita com sucesso');
+});
+
+//executando e colocando o conjunto de código dentro da variavel app
 const app = express();
-app.use(express.json())
+//enviando o nosso servidor express como parametro para as rotas
 routes(app);
 
-export default app
+
+export default app;
