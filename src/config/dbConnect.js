@@ -1,4 +1,4 @@
-import mongoose from "mongoose"
+import mongoose from "mongoose";
 
 //variaveis de ambiente
 //ao inves de usar o link aqui, poderia usar o dotenv: process.env.STRING_CONEXAO_DB
